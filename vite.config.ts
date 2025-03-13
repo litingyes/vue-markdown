@@ -15,10 +15,4 @@ export default defineConfig({
     dts(),
     external(),
   ],
-  test: {
-    coverage: {
-      provider: 'v8',
-      include: ['src/**'],
-    },
-  },
 })
