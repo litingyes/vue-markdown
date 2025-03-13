@@ -30,6 +30,7 @@
     "dist"
   ],
   "scripts": {
+    "dev": "cd playground && pnpm dev",
     "lint": "eslint .",
     "format": "eslint --fix .",
     "build": "vite build",
