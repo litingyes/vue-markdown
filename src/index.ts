@@ -1,3 +1,1 @@
-export function count(num: number) {
-  return num + 1
-}
+export { default as VueMarkdown } from './VueMarkdown.vue'

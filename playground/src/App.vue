@@ -1,30 +1,37 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue';
+import {VueMarkdown} from '../../src';
+
+const mdStr = ref('')
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+<div class="playground">
+  <div class="container">
+    <textarea v-model="mdStr" />
+    <VueMarkdown :md="mdStr" />
   </div>
-  <HelloWorld msg="Vite + Vue" />
+</div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style lang="scss">
+body {
+  margin: 0;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+* {
+  box-sizing: border-box;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.playground {
+  height: 100vh;
+
+  .container {
+    height: 100%;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 24px;
+  }
 }
 </style>
