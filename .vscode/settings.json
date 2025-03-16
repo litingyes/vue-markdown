@@ -4,6 +4,7 @@
     "bumpp",
     "changelogithub",
     "commitlint",
+    "mdast",
     "preid",
     "unplugin"
   ],

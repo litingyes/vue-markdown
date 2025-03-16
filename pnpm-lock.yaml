@@ -11,9 +11,15 @@ importers:
       mdast-util-from-markdown:
         specifier: ^2.0.2
         version: 2.0.2
+      mdast-util-gfm:
+        specifier: ^3.1.0
+        version: 3.1.0
       mdast-util-to-vnode:
-        specifier: ^0.3.0
-        version: 0.3.0(vue@3.5.13(typescript@5.7.3))
+        specifier: ^0.3.2
+        version: 0.3.2(vue@3.5.13(typescript@5.7.3))
+      micromark-extension-gfm:
+        specifier: ^3.0.0
+        version: 3.0.0
       vue:
         specifier: '3'
         version: 3.5.13(typescript@5.7.3)
@@ -2367,8 +2373,8 @@ packages:
   mdast-util-gfm-task-list-item@2.0.0:
     resolution: {integrity: sha512-IrtvNvjxC1o06taBAVJznEnkiHxLFTzgonUdy8hzFVeDun0uTjxxrRGVaNFqkU1wJR3RBPEfsxmU6jDWPofrTQ==}
 
-  mdast-util-gfm@3.0.0:
-    resolution: {integrity: sha512-dgQEX5Amaq+DuUqf26jJqSK9qgixgd6rYDHAv4aTBuA92cTknZlKpPfa86Z/s8Dj8xsAQpFfBmPUHWJBWqS4Bw==}
+  mdast-util-gfm@3.1.0:
+    resolution: {integrity: sha512-0ulfdQOM3ysHhCJ1p06l0b0VKlhU0wuQs3thxZQagjcjPrlFRqY215uZGHHJan9GEAXd9MbfPjFJz+qMkVR6zQ==}
 
   mdast-util-phrasing@4.1.0:
     resolution: {integrity: sha512-TqICwyvJJpBwvGAMZjj4J2n0X8QWp21b9l0o7eXyVJ25YNWYbJDVIyD1bZXE6WtV6RmKJVYmQAKWa0zWOABz2w==}
@@ -2379,8 +2385,8 @@ packages:
   mdast-util-to-string@4.0.0:
     resolution: {integrity: sha512-0H44vDimn51F0YwvxSJSm0eCDOJTRlmN0R1yBh4HLj9wiV1Dn0QoXGbvFAWj2hSItVTlCmBF1hqKlIyUBVFLPg==}
 
-  mdast-util-to-vnode@0.3.0:
-    resolution: {integrity: sha512-fL8v/jA+ez7qFyiG0gkc7T0MYjXT2IRdW7hvzboESvLRMZzN5cxNKiVr8PCQrrEVTI7M+CQnebed+298/DBmdQ==}
+  mdast-util-to-vnode@0.3.2:
+    resolution: {integrity: sha512-ZTOvEhFQRmQjGIdSuIqFnIPEHVwOwkUPRODibMPYhonJQz/tnTSQ0Zq8g6QTQs6I7fRa7thQSwSdXMzPWpXEGA==}
     peerDependencies:
       vue: '3'
 
@@ -3998,7 +4004,7 @@ snapshots:
     dependencies:
       '@eslint/plugin-kit': 0.2.3
       mdast-util-from-markdown: 2.0.2
-      mdast-util-gfm: 3.0.0
+      mdast-util-gfm: 3.1.0
       micromark-extension-gfm: 3.0.0
     transitivePeerDependencies:
       - supports-color
@@ -5992,7 +5998,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-gfm@3.0.0:
+  mdast-util-gfm@3.1.0:
     dependencies:
       mdast-util-from-markdown: 2.0.2
       mdast-util-gfm-autolink-literal: 2.0.1
@@ -6025,7 +6031,7 @@ snapshots:
     dependencies:
       '@types/mdast': 4.0.4
 
-  mdast-util-to-vnode@0.3.0(vue@3.5.13(typescript@5.7.3)):
+  mdast-util-to-vnode@0.3.2(vue@3.5.13(typescript@5.7.3)):
     dependencies:
       vue: 3.5.13(typescript@5.7.3)
 
