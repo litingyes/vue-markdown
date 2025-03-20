@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import {VueMarkdown} from '../../src';
-
-const mdStr = ref('')
+import Header from './Header.vue';
+import Container from './Container.vue'
+import { NConfigProvider } from 'naive-ui'
 </script>
 
 <template>
-<div class="playground">
-  <div class="container">
-    <textarea v-model="mdStr" />
-    <VueMarkdown :md="mdStr" />
-  </div>
-</div>
+  <NConfigProvider>
+    <div class="playground">
+      <Header />
+      <Container />
+    </div>
+  </NConfigProvider>
 </template>
 
 <style lang="scss">
@@ -22,16 +21,15 @@ body {
 * {
   box-sizing: border-box;
 }
+</style>
 
+<style lang="scss">
 .playground {
+  width: 100vw;
   height: 100vh;
+  padding: 16px;
 
-  .container {
-    height: 100%;
-    padding: 16px;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 24px;
-  }
+  display: flex;
+  flex-direction: column;
 }
 </style>
