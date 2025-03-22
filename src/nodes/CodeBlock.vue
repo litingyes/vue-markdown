@@ -101,6 +101,17 @@ const { copy, copied } = useClipboard({
   }
 }
 
+.dark .vue-markdown-code-block {
+  &__lang {
+    color: #a3a3a3;
+  }
+
+  &__copy {
+    color: #a3a3a3;
+    background: #111827;
+  }
+}
+
 html.dark .vue-markdown-code-block .shiki,
 html.dark .vue-markdown-code-block .shiki span {
   color: var(--shiki-dark) !important;

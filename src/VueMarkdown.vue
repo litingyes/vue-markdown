@@ -96,6 +96,10 @@ provide<VUE_MARKDOWN_CONTEXT>(VUE_MARKDOWN_CONTEXT_KEY, {
 }
 
 .vue-markdown {
+  & > div > *:first-child {
+    margin-top: 0;
+  }
+
   font-size: var(--vue-markdown-font-size, 16px);
   line-height: 1.5;
 
@@ -145,24 +149,24 @@ provide<VUE_MARKDOWN_CONTEXT>(VUE_MARKDOWN_CONTEXT_KEY, {
       left: 0;
       height: 100%;
       width: 4px;
-      background: oklch(0.13 0.028 261.692);
+      background: #d1d5db;
       border-radius: 9999px;
     }
   }
 
   a {
-    color: oklch(0.707 0.165 254.624);
+    color: #3b82f6;
     transition: color ease-out 0.3s;
 
     &:hover {
-      color: oklch(0.623 0.214 259.815);
+      color: #2563eb;
     }
   }
 
   hr {
     border-width: 0;
     border-top-width: 1px;
-    border-color: oklch(0.872 0.01 258.338);
+    border-color: #6b7280;
   }
 
   pre {
@@ -171,11 +175,25 @@ provide<VUE_MARKDOWN_CONTEXT>(VUE_MARKDOWN_CONTEXT_KEY, {
     border-radius: 8px;
   }
   code:not(pre > code) {
-    background: oklch(0.928 0.006 264.531);
+    background: #e2e8f0;
     padding: 2px 4px;
     border-radius: 4px;
     white-space: nowrap;
     margin: 0 4px;
+    box-shadow:
+      0 1px 3px 0 rgb(0 0 0 / 0.1),
+      0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  table {
+    border-collapse: collapse;
+    border: 1px solid #94a3b8;
+    margin: 24px 0;
+  }
+  th,
+  td {
+    padding: 4px 8px;
+    border: 1px solid #94a3b8;
   }
 
   img {
@@ -187,6 +205,30 @@ provide<VUE_MARKDOWN_CONTEXT>(VUE_MARKDOWN_CONTEXT_KEY, {
   }
   s {
     text-decoration: line-through;
+  }
+}
+
+.dark .vue-markdown {
+  blockquote {
+    &::before {
+      background: #374151;
+    }
+  }
+
+  a {
+    &:hover {
+      color: #60a5fa;
+    }
+  }
+
+  code:not(pre > code) {
+    background: #1e293b;
+  }
+
+  table,
+  th,
+  td {
+    border-color: #475569;
   }
 }
 </style>
