@@ -7,7 +7,7 @@
   "description": "The vue component for render MarkDown string.",
   "author": "litingyes <luz.liting@gmail.com> (https://litingyes.top/)",
   "license": "MIT",
-  "homepage": "https://github.com/litingyes/vue-markdown#readme",
+  "homepage": "https://vue-markdown-x.vercel.app/",
   "bugs": {
     "url": "https://github.com/litingyes/vue-markdown/issues"
   },
