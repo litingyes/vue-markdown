@@ -2,10 +2,12 @@
   "cSpell.words": [
     "antfu",
     "bumpp",
+    "catppuccin",
     "changelogithub",
     "commitlint",
     "mdast",
     "preid",
+    "shiki",
     "unplugin"
   ],
   // Disable the default formatter, use eslint instead

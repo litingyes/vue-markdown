@@ -1,37 +1,18 @@
-<template>
-  <header>
-    <h1>Vue Markdown</h1>
-    <p>{{ pkgInfo.description }}</p>
-  </header>
-</template>
-
 <script setup lang="ts">
 import pkgInfo from '../../package.json'
 
 defineOptions({
-  name:'PlaygroundHeader'
+  name: 'PlaygroundHeader',
 })
 </script>
 
-<style scoped>
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-h1 {
-  margin: 0;
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: 600;
-  color: #0a0a0a;
-}
-
-p {
-  margin: 0;
-  font-size: 14;
-  line-height: 20px;
-  color: #171717;
-}
-</style>
+<template>
+  <header class="flex flex-col items-center">
+    <h1 class="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+      Vue Markdown
+    </h1>
+    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+      {{ pkgInfo.description }}
+    </p>
+  </header>
+</template>

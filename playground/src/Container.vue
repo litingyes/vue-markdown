@@ -1,36 +1,75 @@
-<template>
-  <div class="container">
-    <div class="actions">
-      <NSlider v-model:value="ms"
-               :min="10" :max="300" :step="10" :disabled="loading"
-               :format-tooltip="number => `Stream speed: ${number} ms per letter`" />
-      <NButton :loading="loading" :disabled="!mdStr?.trim().length" @click="rerun">Rerun</NButton>
-    </div>
-    <div class="render">
-      <NInput v-model:value="mdStr" type="textarea" :disabled="loading" />
-      <VueMarkdown :md="mdStr" />
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import { VueMarkdown } from '../../src';
-import { NButton, NSlider, NInput } from 'naive-ui'
+import { watchThrottled } from '@vueuse/core'
+import { NButton, NIcon, NInput, NScrollbar, NSelect, NSlider } from 'naive-ui'
+import { computed, inject, nextTick, ref, type Ref } from 'vue'
+import { VueMarkdown } from '../../src'
+import IconGithub from './icons/github.vue'
+import IconMoon from './icons/moon.vue'
+import IconSun from './icons/sun.vue'
+import codeLanguages from './templates/code-languages.md?raw'
+import fullMarkdown from './templates/full-markdown.md?raw'
 
 defineOptions({
-  name: 'PlaygroundContainer'
+  name: 'PlaygroundContainer',
 })
 
-const mdStr = ref('')
+const leftRef = ref()
+const rightRef = ref()
 
-const timeId = ref<NodeJS.Timeout>()
-const ms = ref(100)
-const rerun = () => {
+const mdStr = ref('')
+watchThrottled(mdStr, () => {
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      leftRef.value?.scrollBy({
+        top: Number.MAX_SAFE_INTEGER,
+        behavior: 'smooth',
+      })
+      rightRef.value?.scrollBy({
+        top: Number.MAX_SAFE_INTEGER,
+        behavior: 'smooth',
+      })
+    })
+  })
+})
+
+const templates = [
+  {
+    label: 'Full markdown',
+    value: 'full-markdown',
+  },
+  {
+    label: 'Code languages',
+    value: 'code-languages',
+  },
+]
+function onSelectTemplate(value: string) {
+  switch (value) {
+    case 'full-markdown': {
+      mdStr.value = fullMarkdown
+      rerun()
+      break
+    }
+    case 'code-languages': {
+      mdStr.value = codeLanguages
+      rerun()
+      break
+    }
+    default: {
+      mdStr.value = ''
+      break
+    }
+  }
+}
+
+const timeId = ref<ReturnType<typeof setInterval>>()
+const ms = ref(10)
+function rerun() {
   if (timeId.value) {
     clearInterval(timeId.value)
 
     timeId.value = undefined
+
+    return
   }
 
   const str = mdStr.value
@@ -38,7 +77,6 @@ const rerun = () => {
 
   mdStr.value = ''
   timeId.value = setInterval(() => {
-    console.log('setInterval')
     if (index >= str.length) {
       clearInterval(timeId.value)
       timeId.value = undefined
@@ -51,32 +89,73 @@ const rerun = () => {
 }
 
 const loading = computed(() => !!timeId.value)
+
+const { isDark, toggleTheme } = inject<{
+  isDark: Ref<boolean>
+  toggleTheme: () => void
+}>('context')!
 </script>
 
-<style lang="scss" scoped>
-.container {
-  flex: 1;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.actions {
-  display: flex;
-  gap: 16px;
-
-  .n-slider {
-    max-width: 200px;
-    display: flex;
-    align-items: center;
-  }
-}
-
-.render {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-</style>
+<template>
+  <div class=" flex-1 flex flex-col gap-4">
+    <div class="flex justify-between items-center">
+      <div class="flex gap-4">
+        <NButton type="primary" :quaternary="loading" :disabled="!mdStr.trim()" @click="rerun">
+          {{ loading ? 'Stop' : 'Rerun' }}
+        </NButton>
+        <NSelect class="w-52" :disabled="loading" :options="templates" :consistent-menu-width="false" placeholder="Select markdown template" clearable @update:value="onSelectTemplate" />
+        <div>
+          <div class="flex items-center justify-between gap-2">
+            <label class="text-sm text-neutral-600 dark:text-neutral-400">Stream speed</label>
+            <div class="text-xs text-neutral-500">
+              {{ Math.round(1000 / ms) }} characters / min
+            </div>
+          </div>
+          <NSlider
+            v-model:value="ms"
+            class="w-56"
+            :min="1"
+            :max="50"
+            :step="1"
+            :disabled="loading"
+            :tooltip="false"
+          />
+        </div>
+      </div>
+      <div class="flex items-center">
+        <NButton quaternary circle @click="toggleTheme()">
+          <template #icon>
+            <NIcon>
+              <IconMoon v-if="isDark" />
+              <IconSun v-else />
+            </NIcon>
+          </template>
+        </NButton>
+        <a href="https://github.com/litingyes/vue-markdown.git" target="_blank">
+          <NButton quaternary circle>
+            <template #icon>
+              <NIcon>
+                <IconGithub />
+              </NIcon>
+            </template>
+          </NButton>
+        </a>
+      </div>
+    </div>
+    <div class="flex-1 grid grid-cols-2 gap-6 h-[calc(100%-38px-16px)]">
+      <NScrollbar ref="leftRef" class="h-full pr-3">
+        <NInput
+          v-model:value="mdStr"
+          type="textarea"
+          placeholder="MarkDown content to render"
+          :disabled="loading"
+          :autosize="{ minRows: 20 }"
+          autofocus
+        />
+      </NScrollbar>
+      <NScrollbar ref="rightRef" class="h-full pr-3">
+        <VueMarkdown :md="mdStr" />
+      </NScrollbar>
+    </div>
+  </div>
+</template>
