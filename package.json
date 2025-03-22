@@ -44,10 +44,12 @@
     "vue": "3"
   },
   "dependencies": {
+    "@vueuse/core": "^13.0.0",
     "mdast-util-from-markdown": "^2.0.2",
     "mdast-util-gfm": "^3.1.0",
     "mdast-util-to-vnode": "^0.3.2",
-    "micromark-extension-gfm": "^3.0.0"
+    "micromark-extension-gfm": "^3.0.0",
+    "shiki": "^3.2.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.14.0",
