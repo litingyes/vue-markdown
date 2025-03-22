@@ -103,7 +103,7 @@ const { isDark, toggleTheme } = inject<{
         <NButton type="primary" :quaternary="loading" :disabled="!mdStr.trim()" @click="rerun">
           {{ loading ? 'Stop' : 'Rerun' }}
         </NButton>
-        <NSelect class="w-52" :disabled="loading" :options="templates" :consistent-menu-width="false" placeholder="Select markdown template" clearable @update:value="onSelectTemplate" />
+        <NSelect class="w-56" :disabled="loading" :options="templates" :consistent-menu-width="false" placeholder="Select markdown template" clearable @update:value="onSelectTemplate" />
         <div>
           <div class="flex items-center justify-between gap-2">
             <label class="text-sm text-neutral-600 dark:text-neutral-400">Stream speed</label>
