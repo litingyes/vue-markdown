@@ -15,7 +15,9 @@
     "vue",
     "markdown",
     "stream",
-    "ai"
+    "ai",
+    "mdast",
+    "unified"
   ],
   "exports": {
     ".": {
