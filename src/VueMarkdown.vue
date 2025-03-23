@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ToVNodeOptions } from 'mdast-util-to-vnode'
 import type { HighlighterCore, LanguageRegistration, ThemeRegistration } from 'shiki'
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { gfmFromMarkdown } from 'mdast-util-gfm'
@@ -43,6 +44,7 @@ const props = withDefaults(defineProps<VueMarkdownProps>(), {
 })
 interface VueMarkdownProps {
   md: string
+  components?: ToVNodeOptions['components']
   shiki?: {
     themes?: Record<string, ThemeRegistration>
     langs?: LanguageRegistration[][]
@@ -57,6 +59,7 @@ const vNode = computed(() => {
   return toVNode(ast, {
     components: {
       code: CodeBlock,
+      ...props.components,
     },
   })
 })

@@ -6,9 +6,11 @@
     "changelogithub",
     "commitlint",
     "mdast",
+    "micromark",
     "preid",
     "shiki",
-    "unplugin"
+    "unplugin",
+    "vnode"
   ],
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,

@@ -43,6 +43,18 @@ Markdown string to render.
 type md = string
 ```
 
+#### components
+
+Customize how nodes are rendered.
+
+```ts
+type ComponentReturn = Component | [Component, Record<string, any> | undefined]
+
+// default: undefined
+type components = Partial<Record<Nodes['type'], ComponentReturn |
+  ((node: Node) => ComponentReturn)>>
+```
+
 #### shiki
 
 options of shiki for render code block.
