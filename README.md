@@ -1,15 +1,15 @@
 # ![Logo](./playground/public/logo.svg) Vue Markdown
 
-The vue component for render MarkDown string
+The vue component for render Markdown string
 
 ## What is this?
 
-This is a Vue.js component focused on MarkDown string rendering, which is based on [mdast-util-to-vnode](https://github.com/litingyes/mdast-util-to-vnode) to parse MarkDown string and render by Vue.js.
+This is a Vue.js component focused on Markdown string rendering, which is based on [mdast-util-to-vnode](https://github.com/litingyes/mdast-util-to-vnode) to parse Markdown string and render by Vue.js.
 
 ## When should I use this?
 
-- Rendering MarkDown strings with Vue.js
-- Streaming MarkDown strings (usually in AI Chat)
+- Rendering Markdown strings with Vue.js
+- Streaming Markdown strings (usually in AI Chat)
 
 ## Install
 
@@ -36,7 +36,7 @@ const mdStr = ref('')
 
 #### md
 
-MarkDown string to render.
+Markdown string to render.
 
 ```ts
 // default: ''

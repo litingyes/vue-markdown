@@ -2,12 +2,12 @@
 import { watchThrottled } from '@vueuse/core'
 import { NButton, NIcon, NInput, NScrollbar, NSelect, NSlider } from 'naive-ui'
 import { computed, inject, nextTick, ref, type Ref } from 'vue'
+import readme from '../../README.md?raw'
 import { VueMarkdown } from '../../src'
 import IconGithub from './icons/github.vue'
 import IconMoon from './icons/moon.vue'
 import IconSun from './icons/sun.vue'
 import codeLanguages from './templates/code-languages.md?raw'
-import fullMarkdown from './templates/full-markdown.md?raw'
 
 defineOptions({
   name: 'PlaygroundContainer',
@@ -34,8 +34,8 @@ watchThrottled(mdStr, () => {
 
 const templates = [
   {
-    label: 'Full markdown',
-    value: 'full-markdown',
+    label: 'README',
+    value: 'readme',
   },
   {
     label: 'Code languages',
@@ -44,8 +44,8 @@ const templates = [
 ]
 function onSelectTemplate(value: string) {
   switch (value) {
-    case 'full-markdown': {
-      mdStr.value = fullMarkdown
+    case 'readme': {
+      mdStr.value = readme.replace('./playground/public/logo.svg', 'logo.svg')
       rerun()
       break
     }
@@ -180,7 +180,7 @@ async function toToggleTheme({ clientX: x, clientY: y }: MouseEvent) {
         <NInput
           v-model:value="mdStr"
           type="textarea"
-          placeholder="MarkDown content to render"
+          placeholder="Markdown content to render"
           :disabled="loading"
           :autosize="{ minRows: 20 }"
           autofocus

@@ -17,7 +17,7 @@ div {
 
 ```html
 <h1>Vue Markdown</h1>
-<p>The vue component for render MarkDown string.</p>
+<p>The vue component for render Markdown string.</p>
 ```
 
 ---
@@ -31,7 +31,7 @@ console.log('Vue markdown')
 ```json
 {
   "name": "Vue Markdown",
-  "description": "The vue component for render MarkDown string."
+  "description": "The vue component for render Markdown string."
 }
 ```
 
@@ -40,7 +40,7 @@ console.log('Vue markdown')
 ```md
 # Vue Markdown
 
-The vue component for render MarkDown string.
+The vue component for render Markdown string.
 ```
 
 ---
