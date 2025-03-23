@@ -27,6 +27,7 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
+    "./playground/public/logo.svg",
     "dist"
   ],
   "scripts": {
