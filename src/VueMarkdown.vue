@@ -160,6 +160,7 @@ provide<VUE_MARKDOWN_CONTEXT>(VUE_MARKDOWN_CONTEXT_KEY, {
 
     &:hover {
       color: #2563eb;
+      text-decoration: underline;
     }
   }
 
