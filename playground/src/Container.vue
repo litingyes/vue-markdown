@@ -94,6 +94,39 @@ const { isDark, toggleTheme } = inject<{
   isDark: Ref<boolean>
   toggleTheme: () => void
 }>('context')!
+
+function enableTransitions() {
+  return 'startViewTransition' in document
+    && window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+}
+async function toToggleTheme({ clientX: x, clientY: y }: MouseEvent) {
+  if (!enableTransitions()) {
+    toggleTheme()
+    return
+  }
+
+  const clipPath = [
+    `circle(0px at ${x}px ${y}px)`,
+    `circle(${Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y),
+    )}px at ${x}px ${y}px)`,
+  ]
+
+  await document.startViewTransition(async () => {
+    toggleTheme()
+    await nextTick()
+  }).ready
+
+  document.documentElement.animate(
+    { clipPath: isDark.value ? clipPath.reverse() : clipPath },
+    {
+      duration: 300,
+      easing: 'ease-in',
+      pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`,
+    },
+  )
+}
 </script>
 
 <template>
@@ -123,7 +156,7 @@ const { isDark, toggleTheme } = inject<{
         </div>
       </div>
       <div class="flex items-center">
-        <NButton quaternary circle @click="toggleTheme()">
+        <NButton quaternary circle @click="toToggleTheme">
           <template #icon>
             <NIcon>
               <IconMoon v-if="isDark" />
@@ -159,3 +192,21 @@ const { isDark, toggleTheme } = inject<{
     </div>
   </div>
 </template>
+
+<style lang="scss">
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root),
+.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root),
+.dark::view-transition-old(root) {
+  z-index: 9999;
+}
+</style>
