@@ -166,7 +166,8 @@ provide<VUE_MARKDOWN_CONTEXT>(VUE_MARKDOWN_CONTEXT_KEY, {
   hr {
     border-width: 0;
     border-top-width: 1px;
-    border-color: #6b7280;
+    border-color: #d1d5db;
+    margin: 16px 0;
   }
 
   pre {
@@ -219,6 +220,10 @@ provide<VUE_MARKDOWN_CONTEXT>(VUE_MARKDOWN_CONTEXT_KEY, {
     &:hover {
       color: #60a5fa;
     }
+  }
+
+  hr {
+    border-color: #374151;
   }
 
   code:not(pre > code) {
