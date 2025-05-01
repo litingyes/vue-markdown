@@ -52,7 +52,7 @@
     "mdast-util-gfm": "^3.1.0",
     "mdast-util-to-vnode": "^0.3.2",
     "micromark-extension-gfm": "^3.0.0",
-    "shiki": "^3.2.1"
+    "shiki": "^3.2.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.14.0",
