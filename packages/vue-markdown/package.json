@@ -1,0 +1,59 @@
+{
+  "name": "vue-markdown-x",
+  "type": "module",
+  "version": "0.2.1",
+  "private": false,
+  "packageManager": "pnpm@10.5.2+sha512.da9dc28cd3ff40d0592188235ab25d3202add8a207afbedc682220e4a0029ffbff4562102b9e6e46b4e3f9e8bd53e6d05de48544b0c57d4b0179e22c76d1199b",
+  "description": "The vue component for render Markdown string.",
+  "author": "litingyes <luz.liting@gmail.com> (https://litingyes.top/)",
+  "license": "MIT",
+  "homepage": "https://vue-markdown-x.vercel.app/",
+  "bugs": {
+    "url": "https://github.com/litingyes/vue-markdown/issues"
+  },
+  "keywords": [
+    "vue",
+    "markdown",
+    "stream",
+    "ai",
+    "mdast",
+    "unified"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "commit": "git-cz",
+    "prerelease": "pnpm build",
+    "release": "bumpp",
+    "prepare": "husky"
+  },
+  "peerDependencies": {
+    "vue": "3"
+  },
+  "dependencies": {
+    "@vueuse/core": "^13.0.0",
+    "mdast-util-from-markdown": "^2.0.2",
+    "mdast-util-gfm": "^3.1.0",
+    "mdast-util-to-vnode": "^0.3.2",
+    "micromark-extension-gfm": "^3.0.0",
+    "shiki": "^3.2.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "sass-embedded": "^1.85.1",
+    "unplugin-external": "0.1.0-beta.3",
+    "vite": "^6.1.1",
+    "vite-plugin-dts": "^4.5.0"
+  }
+}

@@ -7,4 +7,5 @@ export default defineConfig({
   push: true,
   all: true,
   confirm: true,
+  recursive: true,
 })

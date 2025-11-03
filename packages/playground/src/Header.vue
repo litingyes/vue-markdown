@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import pkgInfo from '../../package.json'
+import pkgInfo from '../../vue-markdown/package.json'
 
 defineOptions({
   name: 'PlaygroundHeader',
