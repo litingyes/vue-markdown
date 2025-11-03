@@ -1,4 +1,4 @@
-# ![Logo](./playground/public/logo.svg) Vue Markdown
+# ![Logo](./packages/playground/public/logo.svg) Vue Markdown
 
 The vue component for render Markdown string
 
